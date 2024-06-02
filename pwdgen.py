@@ -43,8 +43,21 @@ def copy_password():
     try:
         root.clipboard_clear()  # clear the clipboard
         root.clipboard_append(result_entry.get())  # append the password to the clipboard
+        result_entry['fg'] = 'blue'
     except AttributeError:  # if this is run before the GUI has been fully initialized
         pass
+
+def copy():
+    root.clipboard_clear()
+    root.clipboard_append(result_entry.get())
+    result_entry['fg'] = 'blue'  # Change to blue color
+
+def cut():
+    copy()
+    result_entry.delete(0, tk.END)
+
+def show_popup_menu(event):
+    popup_menu.tk_popup(event.x_root, event.y_root)
 
 
 root = tk.Tk()
@@ -94,5 +107,10 @@ result_entry.pack()
 
 copy_button = tk.Button(root, text="Copy password", command=copy_password)
 copy_button.pack()
+
+popup_menu = tk.Menu(root, tearoff=0)  # Create a right-click menu
+popup_menu.add_command(label="Cut", command=cut)
+popup_menu.add_command(label="Copy", command=copy)
+result_entry.bind("<Button-3>", show_popup_menu)  # Bind the right-click event to show the popup menu
 
 root.mainloop()
