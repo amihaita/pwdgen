@@ -38,6 +38,7 @@ def generate_password():
 
     # result_label.config(text=''.join(password))
     result_entry.delete(0, tk.END)  # clear existing text in the entry field
+    result_entry['fg'] = 'black'  # Set to black color
     result_entry.insert(0, ''.join(password))  # insert the generated password
 
 
