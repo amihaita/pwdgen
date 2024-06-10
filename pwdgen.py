@@ -63,11 +63,18 @@ def show_popup_menu(event):
 
 
 root = tk.Tk()
-root.iconbitmap('./pwdgen.ico')
+root.iconbitmap('./pwdgen.ico') # Application icon
 root.title("Password Generator")
-root.geometry("280x330+600+200")
-root.minsize(280, 330)
-root.maxsize(400, 350)
+screen_width = root.winfo_screenwidth() # Screen width resolution
+screen_height = root.winfo_screenheight() # Screen height resolution
+window_min_x = 280 # Window minimum width
+window_min_y = 330 # Window minimum height
+window_max_x = 350 # Window maximum width
+window_max_y = 400 # Window maximum height
+screen_string = str(window_min_x) + 'x' + str(window_min_y) + '+' + str(int((screen_width - window_min_x)/2)) + '+' + str(int((screen_height - window_min_y)/4))
+root.geometry(screen_string)
+root.minsize(window_min_x, window_min_y)
+root.maxsize(window_max_x, window_max_y)
 
 message_label = tk.Label(root, text="Change the number of each kind of\n characters you want, or accept default values")
 message_label.pack()
