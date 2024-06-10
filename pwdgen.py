@@ -11,7 +11,7 @@ def generate_password():
         num_numbers = int(number_entry.get())
         num_specials = int(special_entry.get())
     except ValueError:
-        messagebox.showerror("Input error", "Invalid input!")
+        messagebox.showinfo("Input error", "Invalid input!")
         # result_label.config(text="Invalid input")
         return
 
@@ -65,7 +65,7 @@ def show_popup_menu(event):
 root = tk.Tk()
 root.iconbitmap('./pwdgen.ico')
 root.title("Password Generator")
-root.geometry("280x330")
+root.geometry("280x330+600+200")
 root.minsize(280, 330)
 root.maxsize(400, 350)
 
