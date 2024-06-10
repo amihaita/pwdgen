@@ -67,9 +67,8 @@ root.geometry("280x300")
 root.minsize(280, 300)
 root.maxsize(400, 300)
 
-message_label = tk.Label(root, text="Change the number of each kind of\n characters you want, or accept default values",
-                         font='Arial 9 bold')
-message_label.config(bg="cyan", fg="blue")
+message_label = tk.Label(root, text="Change the number of each kind of\n characters you want, or accept default values")
+# message_label.config(bg="cyan", fg="blue")
 message_label.pack()
 
 capital_label = tk.Label(root, text="Number of capital letters:")
