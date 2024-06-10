@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 import random
 
@@ -10,7 +11,8 @@ def generate_password():
         num_numbers = int(number_entry.get())
         num_specials = int(special_entry.get())
     except ValueError:
-        result_label.config(text="Invalid input")
+        messagebox.showerror("Input error", "Invalid input!")
+        # result_label.config(text="Invalid input")
         return
 
     password = ''
@@ -34,7 +36,7 @@ def generate_password():
     password = list(password)
     random.shuffle(password)
 
-    result_label.config(text="Your new password is: " + ''.join(password))
+    # result_label.config(text=''.join(password))
     result_entry.delete(0, tk.END)  # clear existing text in the entry field
     result_entry.insert(0, ''.join(password))  # insert the generated password
 
@@ -68,7 +70,6 @@ root.minsize(280, 330)
 root.maxsize(400, 350)
 
 message_label = tk.Label(root, text="Change the number of each kind of\n characters you want, or accept default values")
-# message_label.config(bg="cyan", fg="blue")
 message_label.pack()
 
 capital_label = tk.Label(root, text="Number of capital letters:")
@@ -96,10 +97,10 @@ special_entry.insert(0, "1")
 special_entry.pack(pady=5)
 
 generate_button = tk.Button(root, text="Generate password", command=generate_password)
-generate_button.pack()
+generate_button.pack(pady=5)
 
-result_label = tk.Label(root, text="")
-result_label.pack()
+description_label = tk.Label(root, text="Your new password is: ")
+description_label.pack()
 
 result_entry = tk.Entry(root, width=40)  # field to display the generated password
 result_entry.pack(pady=5)
