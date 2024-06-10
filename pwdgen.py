@@ -63,9 +63,9 @@ def show_popup_menu(event):
 root = tk.Tk()
 root.iconbitmap('./pwdgen.ico')
 root.title("Password Generator")
-root.geometry("280x300")
-root.minsize(280, 300)
-root.maxsize(400, 300)
+root.geometry("280x330")
+root.minsize(280, 330)
+root.maxsize(400, 350)
 
 message_label = tk.Label(root, text="Change the number of each kind of\n characters you want, or accept default values")
 # message_label.config(bg="cyan", fg="blue")
@@ -93,7 +93,7 @@ special_label = tk.Label(root, text="Number of special characters:")
 special_label.pack()
 special_entry = tk.Entry(root)
 special_entry.insert(0, "1")
-special_entry.pack()
+special_entry.pack(pady=5)
 
 generate_button = tk.Button(root, text="Generate password", command=generate_password)
 generate_button.pack()
@@ -102,7 +102,7 @@ result_label = tk.Label(root, text="")
 result_label.pack()
 
 result_entry = tk.Entry(root, width=40)  # field to display the generated password
-result_entry.pack()
+result_entry.pack(pady=5)
 
 copy_button = tk.Button(root, text="Copy password", command=copy_password)
 copy_button.pack()
