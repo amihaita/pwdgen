@@ -42,6 +42,10 @@ def generate_password():
     result_entry.insert(0, ''.join(password))  # insert the generated password
 
 
+    # description_label modifier
+    total_chars_msg = ("Your new " + str(int(num_capitals) + int(num_lowers) + int(num_numbers) + int(num_specials)) + " characters length password is:")
+    description_label.configure(text=total_chars_msg)
+
 def copy_password():
     try:
         root.clipboard_clear()  # clear the clipboard
@@ -104,10 +108,10 @@ special_entry = tk.Entry(root)
 special_entry.insert(0, "1")
 special_entry.pack(pady=5)
 
-generate_button = tk.Button(root, text="Generate password", command=generate_password)
+generate_button = tk.Button(root, text="Generate", command=generate_password)
 generate_button.pack(pady=5)
 
-description_label = tk.Label(root, text="Your new password is: ")
+description_label = tk.Label(root, text="Press the button to generate a password")
 description_label.pack()
 
 result_entry = tk.Entry(root, width=40)  # field to display the generated password
