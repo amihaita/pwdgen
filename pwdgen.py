@@ -5,6 +5,15 @@ import random
 
 
 def generate_password():
+    """
+    Generate a password based on user input for the number of capital letters, lower case letters, numbers and special characters.
+
+    The generated password will be a string of length at least 8, filled with random characters from the four categories. The password is then shuffled to avoid the first characters always being the same.
+
+    If the user inputs are invalid, an error message is shown and the function returns without doing anything else.
+
+    :return: None
+    """
     try:
         num_capitals = int(capital_entry.get())
         num_lowers = int(lower_entry.get())
@@ -47,6 +56,13 @@ def generate_password():
     description_label.configure(text=total_chars_msg)
 
 def copy_password():
+    """
+    Copy the generated password to the clipboard.
+
+    If the GUI has not been fully initialized, silently do nothing.
+
+    :return: None
+    """
     try:
         root.clipboard_clear()  # clear the clipboard
         root.clipboard_append(result_entry.get())  # append the password to the clipboard
@@ -55,15 +71,35 @@ def copy_password():
         pass
 
 def copy():
+    """
+    Copy the generated password to the clipboard.
+
+    :return: None
+    """
     root.clipboard_clear()
     root.clipboard_append(result_entry.get())
     result_entry['fg'] = 'blue'  # Change to blue color
 
 def cut():
+    """
+    Copy the current password to the clipboard, then delete it from the text field.
+
+    This is equivalent to a "cut" operation in the context of text editing.
+
+    :return: None
+    """
     copy()
     result_entry.delete(0, tk.END)
 
 def show_popup_menu(event):
+    """
+    Show the popup menu at the given position.
+
+    The popup menu is set up before this function is called. It is then shown at the given position.
+
+    :param event: The event that triggered the popup menu. This event provides the position.
+    :return: None
+    """
     popup_menu.tk_popup(event.x_root, event.y_root)
 
 
